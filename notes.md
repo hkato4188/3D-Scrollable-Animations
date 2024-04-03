@@ -1,0 +1,4 @@
+- Create vanilla JS app with vite: `npm create vite@latest <project-name>`
+- Install dependencies
+    - three.js: `npm install three`
+- Server website locally: `npm run dev`
