@@ -37,7 +37,7 @@ scene.add(lightHelper, gridHelper);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const geometry = new THREE.SphereGeometry(0.25, 10, 10);
   const material = new THREE.MeshStandardMaterial({ color: 0x4c6793 });
   const star = new THREE.Mesh(geometry, material);
   const [x, y, z] = Array(3)
@@ -68,8 +68,15 @@ const moon = new THREE.Mesh(
     normalMap: normalTexture,
   })
 );
-
+moon.position.z = 30;
+moon.position.setX(-10);
 scene.add(moon);
+
+function moveCamera() {
+  const t = document.body.getBoundingClientRect().top;
+  moon.rotation.x += 0.05;
+}
+document.body.onscroll = moveCamera;
 
 //rerender screen to see it with recursive function with an infinite loop so you do not have to call the render method repeatedly
 // renderer.render(scene, camera)
